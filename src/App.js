@@ -11,14 +11,22 @@ const pages = [
   ),
   style => (
     <animated.div style={{ ...style, background: "#B2DBBF" }}>
-      {" "}
       <SectionTitle>Two: 🧙</SectionTitle>
     </animated.div>
   ),
   style => (
     <animated.div style={{ ...style, background: "#12DBBF" }}>
-      {" "}
       <SectionTitle>Three: 🧙</SectionTitle>
+    </animated.div>
+  ),
+  style => (
+    <animated.div style={{ ...style, background: "#12DBBF" }}>
+      <SectionTitle>Four: 🧙</SectionTitle>
+    </animated.div>
+  ),
+  style => (
+    <animated.div style={{ ...style, background: "#12DBBF" }}>
+      <SectionTitle>Five: 🧙</SectionTitle>
     </animated.div>
   )
 ];
@@ -27,7 +35,7 @@ class App extends Component {
   state = { index: 0 };
   toggle = e =>
     this.setState(state => ({
-      index: state.index === 2 ? 0 : state.index + 1
+      index: state.index === pages.length - 1 ? 0 : state.index + 1
     }));
   render() {
     return (
@@ -59,7 +67,7 @@ class App extends Component {
           <SubSection>
             <SectionTitle>Hi</SectionTitle>
           </SubSection>
-          <SubSection>
+          <SubSectionTwo>
             <Transition
               native
               unique
@@ -67,20 +75,20 @@ class App extends Component {
               items={this.state.index}
               from={{
                 opacity: 0,
-                transform: "translate3d(100%,0%,0)"
+                transform: "translate3d(-50%,-0,0)"
               }}
               enter={{
                 opacity: 1,
-                transform: "translate3d(0%,0%,0)"
+                transform: "translate3d(0%,0%,0%)"
               }}
               leave={{
                 opacity: 0,
-                transform: "translate3d(-100%,0%,0)"
+                transform: "translate3d(-100%,0,0)"
               }}
             >
               {index => pages[index]}
             </Transition>
-          </SubSection>
+          </SubSectionTwo>
         </SectionContainerGridTwo>
       </AppWrapper>
     );
@@ -127,16 +135,6 @@ const SectionContainerGridTwo = styled.div`
   width: 100%;
   display: grid;
   grid-template-columns: 1fr 1fr;
-
-  div {
-    will-change: transform, opacity;
-    height: 100%;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
 `;
 
 const SubSectionContainer = styled.div`
@@ -156,6 +154,21 @@ const SubSection = styled.div`
   justify-content: center;
 `;
 
+const SubSectionTwo = styled.div`
+  background: ${props => (props.bgColor ? props.bgColor : "#2d2d2d")};
+  height: 100%;
+  width: 100%;
+
+  div {
+    cursor: pointer;
+
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+`;
 const GhostButton = styled.button`
   background: rgba(218, 251, 243, 0);
   color: rgba(218, 251, 243, 1);
