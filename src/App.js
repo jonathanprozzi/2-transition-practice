@@ -1,75 +1,55 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 import { config } from "react-spring";
-import { Parallax, ParallaxLayer } from "react-spring/addons";
+import { Spring, transition, animated } from "react-spring";
 
 class App extends Component {
   render() {
     return (
       <AppWrapper>
-        <Parallax
-          config={{ tension: 150, friction: 20, precision: 0.1 }}
-          pages={3}
-          scrolling={true}
-          vertical
-          ref={ref => (this.parallax = ref)}
-        >
-          <ParallaxLayer offset={0}>
             <SectionContainer bgColor="#16c79e">
               <SectionTitle>Section One</SectionTitle>
-              <GhostButton onClick={() => this.parallax.scrollTo(1)}>
-                Layers can contain anything
+              <GhostButton>
+                Interesting... 🧐
               </GhostButton>
             </SectionContainer>
-          </ParallaxLayer>
-          <ParallaxLayer offset={1}>
+
             <SectionContainer bgColor="#109173">
               <SectionTitle>Section Two</SectionTitle>
-              <GhostButton onClick={() => this.parallax.scrollTo(2)}>
-                Layers can contain anything
+              <GhostButton>
+              Interesting... 🧐
               </GhostButton>
-              <Parallax
-                config={{ tension: 150, friction: 20, precision: 0.1 }}
-                pages={3}
-                scrolling={true}
-                horizontal
-              >
-                <ParallaxLayer offset={0}>
+
                   <SubSectionContainer>
                     <SectionTitle>Sub 1</SectionTitle>
-                    <GhostButton onClick={() => this.parallax.scrollTo(1)}>
+                    <GhostButton>
                       ...and then? 🦄
                     </GhostButton>
                   </SubSectionContainer>
-                </ParallaxLayer>
-                <ParallaxLayer offset={1}>
+
                   <SubSectionContainer>
                     <SectionTitle>Sub 2</SectionTitle>
-                    <GhostButton onClick={() => this.parallax.scrollTo(2)}>
+                    <GhostButton>
                       ...and then? 🦄
                     </GhostButton>
                   </SubSectionContainer>
-                </ParallaxLayer>
-                <ParallaxLayer offset={2}>
+
                   <SubSectionContainer>
                     <SectionTitle>Sub 3</SectionTitle>
-                    <GhostButton onClick={() => this.parallax.scrollTo(0)}>
+                    <GhostButton>
                       ...and then? 🦄
                     </GhostButton>
                   </SubSectionContainer>
-                </ParallaxLayer>
-              </Parallax>
+
             </SectionContainer>
-          </ParallaxLayer>
+
           <ParallaxLayer offset={2}>
             <SectionContainer bgColor="#0a5c49">
               <SectionTitle>Section Three</SectionTitle>
-              <GhostButton onClick={() => this.parallax.scrollTo(0)}>
-                Layers can contain anything
+              <GhostButton>
+              Interesting... 🧐
               </GhostButton>
             </SectionContainer>
-          </ParallaxLayer>
-        </Parallax>
       </AppWrapper>
     );
   }
